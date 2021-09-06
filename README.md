@@ -1,2 +1,18 @@
 # Othello
-Trabalho 2 sobre poda alfa-beta do curso de Inteligência Artificial
+Trabalho 2 sobre poda alfa-beta do curso de Inteligência Artificial. Nele, é implementado agente capaz de jogar Othello (também conhecido como Reversi).
+## Função de avaliação
+...
+## Estratégia de parada
+...
+## Melhorias eventuais
+...
+## Decisões de projeto
+...
+## Dificuldades encontradas
+...
+### Bibliografia
+...
+### Integrantes
+- Anderson Souza de Oliveira - Turma A - Matrícula 233042
+- Ernesto Vaz de Oliveira - Turma A - Matrícula 302470
+- Ricco Soares - Turma A - Matricula 307968
