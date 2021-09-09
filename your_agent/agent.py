@@ -1,5 +1,7 @@
 import random
 import sys
+sys.path.append("..")
+import board
 
 # Voce pode criar funcoes auxiliares neste arquivo
 # e tambem modulos auxiliares neste pacote.
