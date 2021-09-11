@@ -46,6 +46,8 @@ def minimax(state : Board, color: str):
     if state.is_terminal_state():
         return eval_func(state, color)
     succ_list = successors(state, color)
+    if not succ_list:
+        return (-1,-1)
     moves_dict = dict(zip(succ_list, state.legal_moves(color)))
     best_succ = max(succ_list, key= lambda x: min_val(x, color))
     return moves_dict[best_succ]
