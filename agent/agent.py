@@ -9,14 +9,16 @@ WHITE = 'W'
 EMPTY = '.'
 
 
-def eval_func(stateStr : str,color : str): #retorna qt. peças da cor
+def eval_func(state : Board,color : str): #retorna qt. peças da cor
+    s = str(state)
     value = 0
-    for i in stateStr:
-        if i == color:
+    for c in s:
+        if c == color:
             value += 1
     return value
 
-def successor_states(state: Board, color : str):
+
+def successors(state: Board, color : str):
     succ_list = []
     moves = state.legal_moves(color)
     for m in moves:
@@ -26,14 +28,27 @@ def successor_states(state: Board, color : str):
     return succ_list
 
 
-#def max_val(state : Board, color : str):
-#    if state.is_terminal_state():
-#        return eval_func(state, color)
-#    v = None
-#    for succ in 
-#
-#def minimax(state : Board, color: str):
-#    return None
+def max_val(state : Board, color : str):
+    if state.is_terminal_state():
+        return eval_func(state, color)
+    succ_list = successors(state,color)
+    return max(min_val(s,color) for s in succ_list)
+
+
+def min_val(state : Board, color : str):
+    if state.is_terminal_state():
+        return eval_func(state, color)
+    succ_list = successors(state,color)
+    return min(max_val(s,color) for s in succ_list)
+
+
+def minimax(state : Board, color: str):
+    if state.is_terminal_state():
+        return eval_func(state, color)
+    succ_list = successors(state, color)
+    moves_dict = dict(zip(succ_list, state.legal_moves(color)))
+    best_succ = max(succ_list, key= lambda x: min_val(x, color))
+    return moves_dict[best_succ]
 
 def make_move(the_board : Board, color : str):
     """
@@ -42,7 +57,7 @@ def make_move(the_board : Board, color : str):
     :param color: a character indicating the color to make the move ('B' or 'W')
     :return: (int, int) tuple with x, y indexes of the move (remember: 0 is the first row/column)
     """
-    return None
+    return minimax(the_board,color)
     
 
 
