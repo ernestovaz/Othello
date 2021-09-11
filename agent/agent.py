@@ -29,16 +29,16 @@ def successors(state: Board, color : str):
 
 
 def max_val(state : Board, color : str):
-    if state.is_terminal_state():
-        return eval_func(state, color)
     succ_list = successors(state,color)
+    if not succ_list:
+        return eval_func(state, color)
     return max(min_val(s,color) for s in succ_list)
 
 
 def min_val(state : Board, color : str):
-    if state.is_terminal_state():
-        return eval_func(state, color)
     succ_list = successors(state,color)
+    if not succ_list:
+        return eval_func(state, color)
     return min(max_val(s,color) for s in succ_list)
 
 
