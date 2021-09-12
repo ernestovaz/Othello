@@ -18,7 +18,7 @@ def eval_func(state : Board,color : str): #retorna qt. peças da cor
     return value
 
 
-def successors(state: Board, color : str):
+def successors(state: Board, color : str): #consulta a lista de possiveis movimentos e retorna lista de possiveis estados de tabuleiro
     succ_list = []
     moves = state.legal_moves(color)
     for m in moves:
@@ -28,14 +28,14 @@ def successors(state: Board, color : str):
     return succ_list
 
 
-def max_val(state : Board, color : str):
+def max_val(state : Board, color : str): #obtem a lista de possiveis estados de tabuleiro e retorna o melhor avaliado
     succ_list = successors(state,color)
     if not succ_list:
         return eval_func(state, color)
     return max(min_val(s,color) for s in succ_list)
 
 
-def min_val(state : Board, color : str):
+def min_val(state : Board, color : str): #obtem a lista de possiveis estados de tabuleiro e retorna o pior avaliado
     succ_list = successors(state,color)
     if not succ_list:
         return eval_func(state, color)
